@@ -1,0 +1,28 @@
+<project name="Generation of Javadoc" default="javadocs" basedir=".">
+    <description>
+        build system with ant
+    </description>
+
+    <!-- set global properties for  this build -->
+    <!-- source code -->
+    <property name="src" location="src" />
+    <!-- documentation -->
+    <property name="docs" location="docs" />
+
+    <target name="init">
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${docs}" />
+    </target>
+
+    <!-- Task: javadoc  -->
+    <target name="javadocs" depends="init" description="generate documentation">
+        <javadoc destdir="${docs}">
+            <fileset dir="${src}"/>
+        </javadoc>
+    </target>
+
+    <target name="clean" description="clean up">
+        <!-- Delete the "build", "dist" and "clean" directory structure -->
+        <delete dir="${docs}" />
+    </target>
+</project>
